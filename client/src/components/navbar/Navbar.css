@@ -1,0 +1,174 @@
+/* ========== NAVBAR CSS ========== */
+.navbar {
+  background: #e3e6f3;
+  position: sticky;
+  top: -1px;
+  z-index: 99;
+  height: 10vh;
+  line-height: 10vh;
+}
+
+nav ul li {
+  display: inline-block;
+  transition: all .2s ease-out;
+  margin: 0 30px 0 0;
+}
+
+nav ul li a {
+  color: #464646;
+  font-weight: 600;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+  transition: all .2s ease-out;
+  opacity: .8;
+}
+
+nav ul li a:hover {
+  color: var(--primary-color);
+}
+
+.nav__links-mobile {
+  display: none;
+}
+
+.menu__icon {
+  display: none;
+}
+
+nav i {
+  color: #fff;
+}
+
+.login__area {
+  color: #fff;
+}
+
+.login__area a {
+  margin: 0 5px 0 15px;
+  color: #464646;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.login__area i {
+  margin: 0 5px -5px 15px;
+  color: var(--primary-color);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.login__area button {
+  margin-left: 20px;
+}
+
+@media screen and (max-width: 768px) {
+  .login__area {
+    position: absolute;
+    right: 20px;
+  }
+
+  .navbar {
+    text-align: center;
+  }
+
+  nav ul {
+    display: block;
+    width: 50%;
+    height: 90vh;
+    position: absolute;
+    top: 80px;
+    left: -100%;
+    opacity: 1;
+    transition: all .5s ease;
+  }
+
+  nav ul li {
+    display: block;
+  }
+
+  nav ul.active {
+    background-color: #d5a86a;
+    left: 0;
+    opacity: 1;
+    transition: all 0.5s ease;
+    z-index: 100;
+  }
+
+  nav ul li a {
+    font-weight: 400;
+  }
+
+  .menu__icon {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 20px;
+    font-size: 1.8rem;
+    cursor: pointer;
+  }
+
+  .menu__icon i {
+    font-size: 2rem;
+  }
+}
+
+/* ========== HEADER CSS ========== */
+header {
+  padding: 20px 0 20px 0;
+  background-color: #fff;
+}
+
+header .logo img {
+  width: 100px;
+}
+
+header .box {
+  margin: 0 0 0 30px;
+}
+
+header a {
+  font-size: 13px;
+  color: #ccc;
+}
+
+header i {
+  font-size: 40px;
+  color: var(--primary-color);
+  margin-right: 15px;
+}
+
+header .text {
+  margin-top: 10px;
+}
+
+header h4 {
+  line-height: 10px;
+}
+
+@media screen and (max-width: 768px) {
+  .contact {
+    display: block;
+  }
+
+  header .container {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  header .contact {
+    justify-content: center;
+    align-items: center;
+  }
+
+  header a {
+    font-size: 13px;
+  }
+
+  header i {
+    font-size: 30px;
+    margin-right: 5px;
+    margin-top: 10px;
+  }
+
+}
