@@ -1,0 +1,79 @@
+/* google fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap');
+
+/*  css variables */
+:root {
+  --hover-color: #0a525e;
+  --card-bg-01: #fdefe6;
+  --primary-color: #1e5453;
+  --hero-bg: #fff5f7;
+  --heading-fontSize: 2rem;
+  --small-text-color: #999;
+  --text-color: #f4f6f4;
+  --primary-btn: #ff3366;
+}
+
+/* reset browser default */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  padding: 0;
+  margin: 0;
+}
+
+p {
+  color: var(--small-text-color);
+  font-size: 1rem;
+}
+
+h1,
+h2 {
+  font-size: var(--heading-fontSize);
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: unset;
+}
+
+img {
+  width: 100%;
+}
+
+input {
+  padding: 10px;
+  border-radius: 5px;
+  outline: none;
+}
+
+button {
+  border-radius: 5px;
+  background-color: var(--primary-btn);
+}
+
+@media only screen and (max-width: 768px) {
+  section {
+    padding: 40px 0px;
+  }
+}
