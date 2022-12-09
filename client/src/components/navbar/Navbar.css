@@ -1,45 +1,33 @@
 .navbar {
-  top: 0;
-  z-index: 99;
+  height: 70px;
+  background-color: #003580;
   display: flex;
-  height: 15vh;
-  position: sticky;
   justify-content: center;
-  background-color: #fff;
-  box-shadow: 0 5px 15px rgb(0, 0, 0, 0.06);
 }
 
 .navContainer {
   width: 100%;
-  display: flex;
-  color: #e3e6f3;
   max-width: 1024px;
+  color: white;
+  display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.navContainer img {
-  width: 20%;
+.logo {
+  font-weight: 700;
+  font-size: 25px;
+  text-transform: uppercase;
 }
-.userName {
-  color: var(--primary-btn);
-  font-weight: 400;
-  border: 2px solid var(--primary-btn);
-  padding: 10px;
-  border-radius: 12px;
-}
-.navItems a {
-  text-decoration: none;
-  color: var(--primary-btn);
-}
+
 .navButton {
-  width: 100px;
-  font-size: 14px;
-  font-weight: 500;
+  height: 35px;
+  min-width: 100px;
   margin-left: 20px;
-  border: 1px solid var(--primary-btn);
-  cursor: pointer;
+  border: none;
   padding: 5px 10px;
-  color: var(--primary-btn);
-  background-color: #fff;
+  cursor: pointer;
+  color: #003580;
+  font-size: 15px;
+  border-radius: 8px;
 }

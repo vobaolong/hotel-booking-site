@@ -1,39 +1,47 @@
-.reserve {
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.418);
-  position: fixed;
-  top: 0;
-  left: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .rContainer {
   background-color: white;
   padding: 20px;
   position: relative;
 }
 
-.rClose {
-  position: absolute;
-  top: 0;
-  right: 0;
-  cursor: pointer;
+.rDatesInfo {
+  display: flex;
+  justify-content: space-between;
 }
 
-.rItem {
-  display: flex;
-  align-items: center;
-  gap: 50px;
-  padding: 20px;
+.rDates {
+  flex: 50%;
 }
 
 .rInfo {
+  flex: 50%;
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 10px;
+  margin-left: 30px;
+}
+
+.rInfo > input {
+  border: 1px gray solid;
+  border-radius: 5px;
+  height: 40px;
+  padding-left: 20px;
+}
+
+.rRoom {
+  max-width: 1024px;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-around;
+  justify-content: space-between;
+}
+
+.rRoomItem {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  padding: 5px;
+  max-width: 50%;
 }
 
 .rTitle {
@@ -56,7 +64,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 5px;
-  font-size: 8px;
+  font-size: 12px;
   color: gray;
 }
 
@@ -65,14 +73,35 @@
   flex-direction: column;
 }
 
+.rBillBook {
+  display: flex;
+  margin-top: 10px;
+}
+
+.payment {
+  flex: 50%;
+  height: 50px;
+  font-size: 15px;
+  padding-left: 20px;
+  background-color: lightgray;
+  border-radius: 5px;
+  margin-right: 200px;
+}
+
 .rButton {
+  height: 50px;
+  flex: 50%;
   border: none;
-  padding: 10px 20px;
   background-color: #0071c2;
   color: white;
   font-weight: bold;
   cursor: pointer;
   border-radius: 5px;
-  width: 100%;
-  margin-top: 20px;
+}
+
+.rClose {
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
 }

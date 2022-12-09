@@ -1,13 +1,7 @@
 .mail {
   width: 100%;
   margin-top: 50px;
-  background: linear-gradient(
-    to right,
-    #db6baa,
-    #b9b9ee,
-    #e2317b
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+  background-color: #003580;
   color: white;
   display: flex;
   flex-direction: column;
@@ -16,22 +10,69 @@
   padding: 50px;
 }
 
-.mailInputContainer > input {
-  width: 300px;
-  height: 40px;
+.mailTitle {
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.mailDesc {
+  color: lightgrey;
+  font-weight: 100;
+  margin-top: -15px;
+}
+
+form {
+  width: 100%;
+  text-align: center;
+  margin: auto;
+}
+
+.mailInput {
+  width: 70%;
+  display: flex;
+  justify-content: center;
+  height: 15vh;
+  margin: auto;
+}
+
+.mailInput>textarea {
+  width: 60%;
   padding: 10px;
   border: none;
-  margin-right: 10px;
+  font-size: 20px;
+  margin-left: 10px;
+  border-radius: 5px;
+  resize: none;
+}
+
+
+.mailInputContainer {
+  width: 40%;
+  display: grid;
+  flex-direction: column;
+}
+
+.mailInputContainer>input {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  font-size: 20px;
   border-radius: 5px;
 }
 
-.mailInputContainer > button {
-  height: 40px;
-  padding: 5px 10px;
-  background-color: var(--primary-btn);
+.mailInputContainer>input:last-child {
+  margin-top: 10px;
+}
+
+
+.sendBtn {
+  width: 13%;
+  height: 50px;
+  background-color: #0071c2;
   color: white;
-  font-weight: 500;
+  font-size: 20px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  margin-top: 1%;
 }

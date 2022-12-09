@@ -1,0 +1,54 @@
+.signup {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: -80px;
+}
+
+.lContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 25%;
+}
+
+.lTitle {
+  align-self: center;
+  margin-bottom: 20px;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+  height: 40px;
+}
+
+.item>label {
+  padding-right: 20px;
+}
+
+.lInput {
+  height: 30px;
+  padding: 10px;
+  border: black solid 1px;
+  border-radius: 5px;
+  padding-left: 20px;
+  width: 70%;
+}
+
+.lButton {
+  border: none;
+  padding: 10px 20px;
+  background-color: #0071c2;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.lButton:disabled {
+  background-color: #0071c28c;
+  cursor: not-allowed;
+}

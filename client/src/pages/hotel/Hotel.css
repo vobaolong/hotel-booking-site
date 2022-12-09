@@ -20,7 +20,7 @@
   right: 0;
   border: none;
   padding: 10px 20px;
-  background-color: var(--primary-btn);
+  background-color: #0071c2;
   color: white;
   font-weight: bold;
   border-radius: 5px;
@@ -29,7 +29,6 @@
 
 .hotelTitle {
   font-size: 24px;
-  color: var(--primary-color);
 }
 
 .hotelAddress {
@@ -63,7 +62,6 @@
   width: 100%;
   object-fit: cover;
   cursor: pointer;
-  border-radius: 12px;
 }
 
 .hotelDetails {
@@ -104,7 +102,7 @@
 .hotelDetailsPrice > button {
   border: none;
   padding: 10px 20px;
-  background-color: var(--primary-btn);
+  background-color: #0071c2;
   color: white;
   font-weight: bold;
   cursor: pointer;
@@ -134,7 +132,6 @@
 .sliderImg {
   width: 80%;
   height: 80vh;
-  border-radius: 12px;
 }
 
 .close {
@@ -142,13 +139,13 @@
   top: 20px;
   right: 20px;
   font-size: 30px;
-  color: var(--primary-btn);
+  color: lightgray;
   cursor: pointer;
 }
 
 .arrow {
-  margin: 40px;
+  margin: 20px;
   font-size: 50px;
-  color: var(--primary-btn);
+  color: lightgray;
   cursor: pointer;
 }

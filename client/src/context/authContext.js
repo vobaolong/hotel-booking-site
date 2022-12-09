@@ -1,14 +1,12 @@
-import { createContext, useEffect, useReducer } from 'react'
+import { createContext, useReducer, useEffect } from 'react';
 
 const INITIAL_STATE = {
-  user: localStorage.getItem('user')
-    ? JSON.parse(localStorage.getItem('user'))
-    : null,
+  user: JSON.parse(localStorage.getItem('user')) || null,
   loading: false,
   error: null,
-}
+};
 
-export const AuthContext = createContext(INITIAL_STATE)
+export const AuthContext = createContext(INITIAL_STATE);
 
 const AuthReducer = (state, action) => {
   switch (action.type) {
@@ -17,37 +15,36 @@ const AuthReducer = (state, action) => {
         user: null,
         loading: true,
         error: null,
-      }
+      };
     case 'LOGIN_SUCCESS':
       return {
         user: action.payload,
         loading: false,
         error: null,
-      }
+      };
     case 'LOGIN_FAILURE':
       return {
         user: null,
         loading: false,
         error: action.payload,
-      }
+      };
     case 'LOGOUT':
       return {
         user: null,
         loading: false,
         error: null,
-      }
+      };
     default:
-      return state
+      return state;
   }
-}
+};
 
 export const AuthContextProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(AuthReducer, INITIAL_STATE)
+  const [state, dispatch] = useReducer(AuthReducer, INITIAL_STATE);
 
-  // Lưu thông tin người dùng vào localStorage
   useEffect(() => {
-    localStorage.setItem('user', JSON.stringify(state.user))
-  }, [state.user])
+    localStorage.setItem('user', JSON.stringify(state.user));
+  });
 
   return (
     <AuthContext.Provider
@@ -60,5 +57,5 @@ export const AuthContextProvider = ({ children }) => {
     >
       {children}
     </AuthContext.Provider>
-  )
-}
+  );
+};
