@@ -1,0 +1,44 @@
+[
+  {
+    "companyName": "G1 Hotel",
+    "aboutCompany": "G1 Hotel là hệ thống quản lý khách sạn trực tuyến, tại đây khách hàng có thể đặt phòng online mà không cần đến tận quầy lễ tân!",
+    "heading": [
+      {
+        "aboutus": "Về chúng tôi",
+        "technical": "Công nghệ",
+        "information": "Thông tin",
+        "account": "Tài khoản"
+      }
+    ],
+    "technical": [
+      { "link": "MongoDB", "path": "/#" },
+      { "link": "ExpressJS", "path": "" },
+      { "link": "ReactJS", "path": "" },
+      { "link": "NodeJS", "path": "" }
+    ],
+    "infoData": [
+      {
+        "link": "Về chúng tôi",
+        "path": "/aboutus"
+      },
+      {
+        "link": "Phòng",
+        "path": "/rooms"
+      }
+    ],
+    "accountInfo": [
+      {
+        "link": "Tài khoản",
+        "path": "/account"
+      },
+      {
+        "link": "Danh sách phòng",
+        "path": "/cart"
+      },
+      {
+        "link": "Đăng nhập",
+        "path": "/login"
+      }
+    ]
+  }
+]
