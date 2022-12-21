@@ -44,7 +44,9 @@ const OrdersList = () => {
   }, [dispatch, error, alert, deleteError, isDeleted, navigate]);
 
   const deleteOrderHandler = (id) => {
-    dispatch(deleteOrder(id));
+    if (window.confirm("Có chắc chắn xóa?")) {
+      dispatch(deleteOrder(id))
+    }
   };
 
   const columns = [

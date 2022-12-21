@@ -39,12 +39,6 @@ const roomSchema = mongoose.Schema({
     required: [true, "Vui lòng nhập số khách tối đa"],
     default: 1,
   },
-  stock: {
-    type: Number,
-    required: [true, "Hãy nhập số lượng phòng"],
-    default: 1,
-    min: [0, "Số lượng phòng không được bé hơn 0"],
-  },
   numOfReviews: {
     type: Number,
     default: 0,
@@ -70,7 +64,12 @@ const roomSchema = mongoose.Schema({
       },
     },
   ],
-
+  disabledStart: {
+    type: Date,
+  },
+  disabledEnd: {
+    type: Date,
+  },
   user: {
     type: mongoose.Schema.ObjectId,
     ref: "User",

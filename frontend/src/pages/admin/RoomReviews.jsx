@@ -52,7 +52,10 @@ const RoomReviews = () => {
   }, [dispatch, error, alert, deleteError, isDeleted, navigate, roomId]);
 
   const deleteReviewHandler = (reviewId) => {
-    dispatch(deleteReviews(reviewId, roomId));
+    if (window.confirm("Có chắc chắn xóa?")) {
+      dispatch(deleteReviews(reviewId, roomId));
+    }
+    
   };
 
   const roomReviewsSubmitHandler = (e) => {

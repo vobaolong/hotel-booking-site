@@ -45,11 +45,26 @@ const RoomDetails = () => {
   const [datesReserve, setDatesReserve] = useState(dates);
 
   const { room, loading, error } = useSelector((state) => state.roomDetails);
-  console.log(room);
   const { success, error: reviewError } = useSelector(
     (state) => state.newReview
   );
 
+  const getDaysArray = (start, end) => {
+    for(var arr=[],dt=new Date(start); dt<=new Date(end); dt.setDate(dt.getDate()+1)){
+      arr.push(new Date(dt));
+  }
+  return arr;
+  }
+  const disabledDates = getDaysArray(new Date(room.disabledStart), new Date(room.disabledEnd))
+
+  const minDate = new Date()
+  if(room.disabledEnd) {
+    if(new Date(room.disabledEnd) >= minDate) {
+      minDate.setDate(new Date(room.disabledEnd).getDate() +1)
+      
+    }
+  } 
+  
   const options = {
     size: "large",
     value: room.ratings,
@@ -69,6 +84,7 @@ const RoomDetails = () => {
     datesReserve[0].startDate
   );
 
+  
   const totalPrice = () => {
     let total = 0;
     total = total + room.price * (days === 0 ? 0 : days);
@@ -93,17 +109,37 @@ const RoomDetails = () => {
     dispatch(getRoomDetails(id));
   }, [dispatch, id, error, alert, reviewError, success]);
 
+  const checkBetween = (date, end, start) => {
+    if(date.getTime() < end.getTime() && date.getTime() > start.getTime()) {
+      return true;
+    } else {
+      return false;
+    }
+  }
   const addToCartHandler = () => {
-    dispatch(
-      addItemsToCart(
-        id,
-        days,
-        datesReserve[0].startDate,
-        datesReserve[0].endDate,
-        totalPrice()
-      )
-    );
-    alert.success("Thêm vào danh sách thành công");
+    if(room.disabledEnd && room.disabledStart) {
+      if(checkBetween(datesReserve[0].startDate, new Date(room.disabledEnd), new Date(room.disabledStart)) || 
+      checkBetween(datesReserve[0].endDate, new Date(room.disabledEnd), new Date(room.disabledStart))
+      ) {
+        alert.error("Ngày đã có khách hàng đặt, xin đặt lại ngày khác");
+        let end = new Date()
+        end.setDate(minDate.getDate()+ 1) 
+      
+        setDatesReserve([{startDate: minDate, endDate: end, key: "selection" }])
+      }
+    } else {
+      dispatch(
+        addItemsToCart(
+          id,
+          days,
+          datesReserve[0].startDate,
+          datesReserve[0].endDate,
+          totalPrice()
+        )
+      );
+      alert.success("Thêm vào danh sách thành công");
+    }
+    
   };
 
   const submitReviewToggle = () => {
@@ -111,10 +147,16 @@ const RoomDetails = () => {
   };
 
   const handleChange = (item) => {
+
     if (
       item.selection.endDate.getDate() === item.selection.startDate.getDate()
     ) {
       alert.error("Ngày ở tối thiểu 1 ngày");
+
+      let end = new Date()
+      end.setDate(minDate.getDate()+ 1) 
+      
+      setDatesReserve([{startDate: minDate, endDate: end, key: "selection" }])
     } else {
       setDatesReserve([item.selection]);
     }
@@ -131,6 +173,7 @@ const RoomDetails = () => {
     setOpen(false);
   };
 
+  
   return (
     <Fragment>
       {loading ? (
@@ -180,31 +223,22 @@ const RoomDetails = () => {
                 <div>
                   Chọn ngày: <b>{days}</b> ngày
                   <DateRange
-                    minDate={new Date()}
+                    minDate={minDate}
                     ranges={datesReserve}
                     onChange={(item) => handleChange(item)}
                     moveRangeOnFirstSelection={false}
                     retainEndDateOnFirstSelection={false}
+                    disabledDates={disabledDates}
                   />
                 </div>
                 <button
-                  disabled={room.stock < 1 ? true : false}
                   onClick={addToCartHandler}
                   className="commonBtnStyle h-2/5 mx-auto md:mx-0 py-2 px-3 w-full sm:w-1/2 md:w-[170px] bg-primaryBlue"
                 >
                   Thêm vào danh sách
                 </button>
               </div>
-              <p className="border-t-2 border-b-2 py-3 border-slate-300 text-slate-600 font-semibold text-center md:text-left">
-                Trạng thái:{" "}
-                <b
-                  className={`${
-                    room.stock < 1 ? "text-red-500" : "text-green-500"
-                  }`}
-                >
-                  {room.stock < 1 ? "Hết phòng" : `Còn ${room.stock} phòng`}
-                </b>
-              </p>
+              
             </div>
             <div className="py-5 font-semibold text-center md:text-left">
               Mô tả:
