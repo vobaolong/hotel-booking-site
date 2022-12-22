@@ -40,7 +40,6 @@ const UpdateRoom = () => {
   const [price, setPrice] = useState(0);
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
-  const [Stock, setStock] = useState(0);
   const [maxCount, setMaxCount] = useState(0);
   const [images, setImages] = useState([]);
   const [oldImages, setOldImages] = useState([]);
@@ -63,7 +62,6 @@ const UpdateRoom = () => {
       setPrice(room.price);
       setDescription(room.description);
       setCategory(room.category);
-      setStock(room.stock);
       setOldImages(room.images);
     }
 
@@ -94,7 +92,6 @@ const UpdateRoom = () => {
     myForm.set("price", price);
     myForm.set("description", description);
     myForm.set("category", category);
-    myForm.set("stock", Stock);
     myForm.set("maxcount", maxCount);
 
     images.forEach((image) => {
@@ -199,15 +196,6 @@ const UpdateRoom = () => {
                     })}
                   </select>
                 </div>
-                <InputField
-                  type="number"
-                  name="stock"
-                  placeholder="Vui lòng nhập số lượng phòng *"
-                  Icon={Storage}
-                  value={Stock}
-                  onChange={(e) => setStock(e.target.value)}
-                  min={0}
-                />
                 <div className="bg-primaryBlue rounded-lg overflow-hidden w-full flex justify-start items-center">
                   <Description className="text-xl text-white mx-2" />
 

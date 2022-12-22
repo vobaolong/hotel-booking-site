@@ -22,12 +22,12 @@ const Dashboard = () => {
 
   let outOfStock = 0;
 
-  rooms &&
-    rooms.forEach((item) => {
-      if (item.stock === 0) {
-        outOfStock += 1;
-      }
-    });
+  // rooms &&
+  //   rooms.forEach((item) => {
+  //     if (item.stock === 0) {
+  //       outOfStock += 1;
+  //     }
+  //   });
 
   useEffect(() => {
     dispatch(getAdminRooms());
@@ -55,16 +55,16 @@ const Dashboard = () => {
     ],
   };
 
-  const doughnutState = {
-    labels: ["Hết phòng", "Còn phòng"],
-    datasets: [
-      {
-        backgroundColor: ["#00A6B4", "#6800B4"],
-        hoverBackgroundColor: ["#4B5000", "#35014F"],
-        data: [outOfStock, rooms.length - outOfStock],
-      },
-    ],
-  };
+  // const doughnutState = {
+  //   labels: ["Hết phòng", "Còn phòng"],
+  //   datasets: [
+  //     {
+  //       backgroundColor: ["#00A6B4", "#6800B4"],
+  //       hoverBackgroundColor: ["#4B5000", "#35014F"],
+  //       data: [outOfStock, rooms.length - outOfStock],
+  //     },
+  //   ],
+  // };
 
   useEffect(() => {
     if (isAuthenticated === false) {
@@ -134,9 +134,9 @@ const Dashboard = () => {
         </div>
 
         {/* doughnutChart */}
-        <div className="w-[50%] md:w-[40%] mx-auto">
+        {/* <div className="w-[50%] md:w-[40%] mx-auto">
           <Doughnut data={doughnutState} />
-        </div>
+        </div> */}
       </div>
     </div>
   );

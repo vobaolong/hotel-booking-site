@@ -58,13 +58,6 @@ const RoomList = () => {
       minWidth: 220,
       flex: 0.4,
     },
-    {
-      field: "stock",
-      headerName: "Số lượng phòng",
-      type: "number",
-      minWidth: 100,
-      flex: 0.2,
-    },
 
     {
       field: "price",
@@ -111,7 +104,6 @@ const RoomList = () => {
     rooms.forEach((item) => {
       rows.push({
         id: item._id,
-        stock: item.stock,
         price: `${FormatPrice(item.price)}`,
         name: item.name,
       });

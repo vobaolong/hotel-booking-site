@@ -29,7 +29,6 @@ const CreateRoom = () => {
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
   const [maxCount, setMaxCount] = useState(0);
-  const [stock, setStock] = useState(0);
   const [images, setImages] = useState([]);
   const [imagesPreview, setImagesPreview] = useState([]);
 
@@ -66,7 +65,6 @@ const CreateRoom = () => {
     myForm.set("price", price);
     myForm.set("description", description);
     myForm.set("category", category);
-    myForm.set("stock", stock);
     myForm.set("maxcount", maxCount);
 
     images.forEach((image) => {
@@ -170,14 +168,6 @@ const CreateRoom = () => {
                     })}
                   </select>
                 </div>
-                <InputField
-                  type="number"
-                  name="stock"
-                  placeholder="Vui lòng nhập số lượng phòng *"
-                  Icon={Storage}
-                  value={stock}
-                  onChange={(e) => setStock(e.target.value)}
-                />
                 <div className="bg-primaryBlue rounded-lg overflow-hidden w-full flex justify-start items-center">
                   <Description className="text-xl text-white mx-2" />
 

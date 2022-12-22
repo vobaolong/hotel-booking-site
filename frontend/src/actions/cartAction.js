@@ -18,7 +18,6 @@ export const addItemsToCart =
         name: data.room.name,
         price: data.room.price,
         image: data.room.images[0].url,
-        stock: data.room.stock,
         days,
         startDate,
         endDate,
