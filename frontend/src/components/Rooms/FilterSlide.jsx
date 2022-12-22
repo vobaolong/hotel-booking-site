@@ -61,7 +61,7 @@ const FilterSlide = ({
             valueLabelDisplay="auto"
             aria-labelledby="range-slider"
             min={0}
-            max={5000000}
+            max={2000000}
           />
 
           <div>

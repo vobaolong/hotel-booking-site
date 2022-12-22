@@ -36,7 +36,7 @@ export const getRoom =
   (
     keyword = "",
     currentPage = 1,
-    price = [0, 5000000],
+    price = [0, 2000000],
     category,
     ratings = 0
   ) =>

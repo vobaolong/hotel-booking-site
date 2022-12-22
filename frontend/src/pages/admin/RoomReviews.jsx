@@ -55,7 +55,6 @@ const RoomReviews = () => {
     if (window.confirm("Có chắc chắn xóa?")) {
       dispatch(deleteReviews(reviewId, roomId));
     }
-    
   };
 
   const roomReviewsSubmitHandler = (e) => {
@@ -64,7 +63,7 @@ const RoomReviews = () => {
   };
 
   const columns = [
-    { field: "id", headerName: "Mã đánh giá", minWidth: 200, flex: 0.5 },
+    { field: "id", headerName: "Mã đánh giá", minWidth: 180, flex: 0.4 },
 
     {
       field: "user",
@@ -75,9 +74,8 @@ const RoomReviews = () => {
     {
       field: "comment",
       headerName: "Bình luận",
-      type: "number",
       minWidth: 300,
-      flex: 0.6,
+      flex: 0.7,
     },
 
     {
@@ -85,7 +83,7 @@ const RoomReviews = () => {
       headerName: "Đánh giá",
       type: "number",
       minWidth: 100,
-      flex: 0.3,
+      flex: 0.2,
 
       cellClassName: (params) => {
         return params.getValue(params.id, "rating") >= 3
@@ -96,9 +94,9 @@ const RoomReviews = () => {
 
     {
       field: "actions",
-      flex: 0.3,
+      flex: 0.2,
       headerName: "Hành động",
-      minWidth: 150,
+      minWidth: 100,
       type: "number",
       sortable: false,
       renderCell: (params) => {

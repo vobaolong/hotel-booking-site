@@ -9,7 +9,7 @@ import {
 import { Link, useNavigate } from "react-router-dom";
 import { useAlert } from "react-alert";
 import MetaData from "../../components/layout/MetaData";
-import { FaRegEdit, FaTrash } from "react-icons/fa";
+import { FaEye, FaTrash } from "react-icons/fa";
 import SideBar from "../../components/admin/Sidebar";
 import { DELETE_ORDER_RESET } from "../../constants/orderConstants";
 import FormatPrice from "../../components/format";
@@ -45,7 +45,7 @@ const OrdersList = () => {
 
   const deleteOrderHandler = (id) => {
     if (window.confirm("Có chắc chắn xóa?")) {
-      dispatch(deleteOrder(id))
+      dispatch(deleteOrder(id));
     }
   };
 
@@ -64,10 +64,10 @@ const OrdersList = () => {
     },
     {
       field: "itemsQty",
-      headerName: "Số đêm",
+      headerName: "Số phòng",
       type: "number",
-      minWidth: 100,
-      flex: 0.2,
+      minWidth: 120,
+      flex: 0.3,
     },
 
     {
@@ -92,7 +92,7 @@ const OrdersList = () => {
               className="text-green-400 mx-5 text-lg hover:text-green-500 transition-all duration-300"
               to={`/admin/order/${params.getValue(params.id, "id")}`}
             >
-              <FaRegEdit />
+              <FaEye />
             </Link>
 
             <button
