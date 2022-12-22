@@ -186,7 +186,9 @@ const UpdateRoom = () => {
                     className="px-3 py-2 outline-none border-2 w-full"
                     onChange={(e) => setMaxCount(e.target.value)}
                   >
-                    <option value="">Vui lòng chọn số khách tối đa *</option>
+                    <option disabled value="">
+                      Vui lòng chọn số khách tối đa *
+                    </option>
                     {maxCountPeople.map((maxCount, index) => {
                       return (
                         <option key={index} value={maxCount}>

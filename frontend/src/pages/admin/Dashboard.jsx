@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import MetaData from "../../components/layout/MetaData";
 import { useSelector, useDispatch } from "react-redux";
-import { Doughnut, Line } from "react-chartjs-2";
+import { Line } from "react-chartjs-2";
 import Sidebar from "../../components/admin/Sidebar";
 import Chart from "chart.js/auto";
 import { CategoryScale } from "chart.js";
@@ -20,7 +20,7 @@ const Dashboard = () => {
   const { orders } = useSelector((state) => state.allOrders);
   const { users } = useSelector((state) => state.allUsers);
 
-  let outOfStock = 0;
+  // let outOfStock = 0;
 
   // rooms &&
   //   rooms.forEach((item) => {

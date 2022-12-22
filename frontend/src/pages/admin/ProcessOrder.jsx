@@ -159,7 +159,7 @@ const ProcessOrder = () => {
                         return (
                           <div
                             key={index}
-                            className="flex gap-5 mt-3 items-center border border-teal-500 rounded-md p-2 mr-2 justify-between"
+                            className="flex gap-5 mt-3 items-center border border-teal-500 rounded-md p-2 mr-2 justify-between max-w-fit"
                           >
                             <img
                               className="w-[20vmax] md:w-[10vmax] rounded-sm"
@@ -175,16 +175,15 @@ const ProcessOrder = () => {
                                 {item.name}
                               </Link>
                             </span>
-
-                            <span className="text-md font-light text-center">
-                              Tổng tiền:{" "}
-                              <p className="text-sm font-bold">
-                                {FormatPrice(order.totalPrice)}{" "}
-                                <b className="text-sm font-light right-2">
-                                  ({item.days} đêm)
-                                </b>
-                              </p>
-                            </span>
+                            <b>
+                              <span className="text-md font-light text-center">
+                                Tổng tiền:{" "}
+                              </span>
+                              {FormatPrice(order.totalPrice)}{" "}
+                              <span className="text-sm font-light right-2">
+                                ({item.days} đêm)
+                              </span>
+                            </b>
                           </div>
                         );
                       })}

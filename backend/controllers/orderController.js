@@ -23,19 +23,18 @@ exports.newOrder = catchAsyncErrors(async (req, res, next) => {
     paidAt: Date.now(),
     user: req.user._id,
   });
-  for(item of orderItems) {
+  for (item of orderItems) {
     let disabledDates = {
       disabledStart: item.startDate,
-      disabledEnd: item.endDate
-    }
+      disabledEnd: item.endDate,
+    };
     let room = await Room.findByIdAndUpdate(item.room, disabledDates, {
       new: true,
       runValidators: true,
       useFindAndModify: false,
     });
-
   }
-  
+
   res.status(201).json({
     success: true,
     order,

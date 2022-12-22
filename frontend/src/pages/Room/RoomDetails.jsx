@@ -50,21 +50,27 @@ const RoomDetails = () => {
   );
 
   const getDaysArray = (start, end) => {
-    for(var arr=[],dt=new Date(start); dt<=new Date(end); dt.setDate(dt.getDate()+1)){
+    for (
+      var arr = [], dt = new Date(start);
+      dt <= new Date(end);
+      dt.setDate(dt.getDate() + 1)
+    ) {
       arr.push(new Date(dt));
-  }
-  return arr;
-  }
-  const disabledDates = getDaysArray(new Date(room.disabledStart), new Date(room.disabledEnd))
-
-  const minDate = new Date()
-  if(room.disabledEnd) {
-    if(new Date(room.disabledEnd) >= minDate) {
-      minDate.setDate(new Date(room.disabledEnd).getDate() +1)
-      
     }
-  } 
-  
+    return arr;
+  };
+  const disabledDates = getDaysArray(
+    new Date(room.disabledStart),
+    new Date(room.disabledEnd)
+  );
+
+  const minDate = new Date();
+  if (room.disabledEnd) {
+    if (new Date(room.disabledEnd) >= minDate) {
+      minDate.setDate(new Date(room.disabledEnd).getDate() + 1);
+    }
+  }
+
   const options = {
     size: "large",
     value: room.ratings,
@@ -84,7 +90,6 @@ const RoomDetails = () => {
     datesReserve[0].startDate
   );
 
-  
   const totalPrice = () => {
     let total = 0;
     total = total + room.price * (days === 0 ? 0 : days);
@@ -110,26 +115,36 @@ const RoomDetails = () => {
   }, [dispatch, id, error, alert, reviewError, success]);
 
   const checkBetween = (date, end, start) => {
-    if(date.getTime() < end.getTime() && date.getTime() > start.getTime()) {
+    if (date.getTime() < end.getTime() && date.getTime() > start.getTime()) {
       return true;
     } else {
       return false;
     }
-  }
+  };
   const addToCartHandler = () => {
-
-    if(room.disabledEnd && room.disabledStart) {
-      if(checkBetween(datesReserve[0].startDate, new Date(room.disabledEnd), new Date(room.disabledStart)) || 
-      checkBetween(datesReserve[0].endDate, new Date(room.disabledEnd), new Date(room.disabledStart))
+    if (room.disabledEnd && room.disabledStart) {
+      if (
+        checkBetween(
+          datesReserve[0].startDate,
+          new Date(room.disabledEnd),
+          new Date(room.disabledStart)
+        ) ||
+        checkBetween(
+          datesReserve[0].endDate,
+          new Date(room.disabledEnd),
+          new Date(room.disabledStart)
+        )
       ) {
         alert.error("Ngày đã có khách hàng đặt, xin đặt lại ngày khác");
-        let end = new Date()
-        end.setDate(minDate.getDate()+ 1) 
-      
-        setDatesReserve([{startDate: minDate, endDate: end, key: "selection" }])
-        return ;
+        let end = new Date();
+        end.setDate(minDate.getDate() + 1);
+
+        setDatesReserve([
+          { startDate: minDate, endDate: end, key: "selection" },
+        ]);
+        return;
       }
-    } 
+    }
     dispatch(
       addItemsToCart(
         id,
@@ -140,8 +155,7 @@ const RoomDetails = () => {
       )
     );
     alert.success("Thêm vào danh sách thành công");
-    return ;
-    
+    return;
   };
 
   const submitReviewToggle = () => {
@@ -149,16 +163,15 @@ const RoomDetails = () => {
   };
 
   const handleChange = (item) => {
-
     if (
       item.selection.endDate.getDate() === item.selection.startDate.getDate()
     ) {
       alert.error("Ngày ở tối thiểu 1 ngày");
 
-      let end = new Date()
-      end.setDate(minDate.getDate()+ 1) 
-      
-      setDatesReserve([{startDate: minDate, endDate: end, key: "selection" }])
+      let end = new Date();
+      end.setDate(minDate.getDate() + 1);
+
+      setDatesReserve([{ startDate: minDate, endDate: end, key: "selection" }]);
     } else {
       setDatesReserve([item.selection]);
     }
@@ -175,7 +188,6 @@ const RoomDetails = () => {
     setOpen(false);
   };
 
-  
   return (
     <Fragment>
       {loading ? (
@@ -240,7 +252,6 @@ const RoomDetails = () => {
                   Thêm vào danh sách
                 </button>
               </div>
-              
             </div>
             <div className="py-5 font-semibold text-center md:text-left">
               Mô tả:

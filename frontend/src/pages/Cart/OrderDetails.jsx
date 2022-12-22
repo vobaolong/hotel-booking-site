@@ -111,38 +111,34 @@ const OrderDetails = () => {
 
               <div className="mt-5">
                 <p className="heading">Chi tiết đơn đặt phòng: </p>
-                <div className="headingData">
-                  {order.orderItems &&
-                    order.orderItems.map((item, index) => {
-                      return (
-                        <div
-                          key={index}
-                          className="flex gap-x-7 mt-3 items-center"
-                        >
-                          <img
-                            className="w-[10vmax] md:w-[5vmax]"
-                            src={item.image}
-                            alt="Room"
-                          />
-                          <Link
-                            className="capitalize"
-                            to={`/room/${item.room}`}
-                          >
-                            <span className="text-md font-light">Phòng: </span>
-                            <b>{item.name}</b>
-                          </Link>
-                          <b>
-                            <span className="text-md font-light">
-                              Tổng tiền:{" "}
-                            </span>
-                            {FormatPrice(order.totalPrice)}{" "}
-                            <span className="text-sm font-light">
-                              ({item.days} đêm)
-                            </span>
-                          </b>
-                        </div>
-                      );
-                    })}
+                <div className="headingData ">
+                  {order.orderItems?.map((item, index) => {
+                    return (
+                      <div
+                        key={index}
+                        className="flex gap-5 mt-3 items-center border border-teal-500 rounded-md p-2 mr-2 max-w-fit"
+                      >
+                        <img
+                          className="w-[20vmax] md:w-[10vmax]"
+                          src={item.image}
+                          alt="Room"
+                        />
+                        <Link className="capitalize" to={`/room/${item.room}`}>
+                          <span className="text-md font-light">Phòng: </span>
+                          <b>{item.name}</b>
+                        </Link>
+                        <b>
+                          <span className="text-md font-light">
+                            Tổng tiền:{" "}
+                          </span>
+                          {FormatPrice(order.totalPrice)}{" "}
+                          <span className="text-sm font-light">
+                            ({item.days} đêm)
+                          </span>
+                        </b>
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
             </div>

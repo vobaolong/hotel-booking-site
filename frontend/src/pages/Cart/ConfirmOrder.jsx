@@ -58,13 +58,13 @@ const ConfirmOrder = () => {
                   </div>
                 </div>
                 <div className="my-5">
-                  <p className="text-xl font-bold">Phòng: </p>
+                  <p className="text-xl font-bold">Phòng </p>
                   <div>
                     {cartItems?.map((item, index) => {
                       return (
                         <div
                           key={index}
-                          className="border hover:border-slate-400 flex px-5 py-1 md:px-10 gap-x-7 mt-3 items-center rounded-lg"
+                          className="border hover:border-slate-400 flex px-2 py-1 md:px-5 gap-x-5 mt-3 items-center rounded-lg justify-center"
                         >
                           <img
                             className="w-[10vmax] md:w-[5vmax] rounded-lg"

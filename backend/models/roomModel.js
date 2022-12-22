@@ -36,7 +36,7 @@ const roomSchema = mongoose.Schema({
   },
   maxcount: {
     type: Number,
-    required: [true, "Vui lòng nhập số khách tối đa"],
+    required: [true, "Vui lòng chọn số khách tối đa"],
     default: 1,
   },
   numOfReviews: {

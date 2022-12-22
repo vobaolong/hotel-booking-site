@@ -63,7 +63,7 @@ const Transaction = () => {
                 <InputField
                   type="tel"
                   name="phoneNO"
-                  placeholder="Vui lòng nhập số điện thoại* (888 888 8888)"
+                  placeholder="Vui lòng nhập số điện thoại*"
                   Icon={Phone}
                   value={phoneNo}
                   size="10"
