@@ -13,7 +13,6 @@ exports.newOrder = catchAsyncErrors(async (req, res, next) => {
     taxPrice,
     totalPrice,
   } = req.body;
-
   const order = await Order.create({
     transactionInfo,
     orderItems,
@@ -24,7 +23,19 @@ exports.newOrder = catchAsyncErrors(async (req, res, next) => {
     paidAt: Date.now(),
     user: req.user._id,
   });
+  for(item of orderItems) {
+    let disabledDates = {
+      disabledStart: item.startDate,
+      disabledEnd: item.endDate
+    }
+    let room = await Room.findByIdAndUpdate(item.room, disabledDates, {
+      new: true,
+      runValidators: true,
+      useFindAndModify: false,
+    });
 
+  }
+  
   res.status(201).json({
     success: true,
     order,
@@ -80,43 +91,43 @@ exports.getAllOrders = catchAsyncErrors(async (req, res, next) => {
 });
 
 // update order status -- admin
-exports.updateOrder = catchAsyncErrors(async (req, res, next) => {
-  const order = await Order.findById(req.params.id);
+// exports.updateOrder = catchAsyncErrors(async (req, res, next) => {
+//   const order = await Order.findById(req.params.id);
 
-  if (!order) {
-    return next(
-      new ErrorHandler(
-        "Không tìm thấy đơn đặt phòng với mã đơn đặt phòng này!",
-        404
-      )
-    );
-  }
+//   if (!order) {
+//     return next(
+//       new ErrorHandler(
+//         "Không tìm thấy đơn đặt phòng với mã đơn đặt phòng này!",
+//         404
+//       )
+//     );
+//   }
 
-  if (order.orderStatus === "Confirm") {
-    return next(new ErrorHandler("Đơn đặt phòng đã được xác nhận", 400));
-  }
+//   if (order.orderStatus === "Confirm") {
+//     return next(new ErrorHandler("Đơn đặt phòng đã được xác nhận", 400));
+//   }
 
-  if (req.body.status === "Confirm") {
-    order.orderItems.forEach(async (order_) => {
-      await updateStock(order_.room);
-    });
-  }
+//   if (req.body.status === "Confirm") {
+//     order.orderItems.forEach(async (order_) => {
+//       await updateStock(order_.room);
+//     });
+//   }
 
-  order.orderStatus = req.body.status;
+//   order.orderStatus = req.body.status;
 
-  await order.save({ validateBeforeSave: false });
+//   await order.save({ validateBeforeSave: false });
 
-  res.status(200).json({
-    success: true,
-  });
-});
+//   res.status(200).json({
+//     success: true,
+//   });
+// });
 
-async function updateStock(id) {
-  const room = await Room.findById(id);
+// async function updateStock(id) {
+//   const room = await Room.findById(id);
 
-  room.stock--;
-  await room.save({ validateBeforeSave: false });
-}
+//   room.stock--;
+//   await room.save({ validateBeforeSave: false });
+// }
 
 // delete order -- admin
 exports.deleteOrder = catchAsyncErrors(async (req, res, next) => {

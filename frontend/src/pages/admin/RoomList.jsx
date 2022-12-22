@@ -43,7 +43,10 @@ const RoomList = () => {
   }, [dispatch, error, alert, deleteError, isDeleted, navigate]);
 
   const deleteRoomHandler = (id) => {
-    dispatch(deleteRoom(id));
+    if (window.confirm("Có chắc chắn xóa?")) {
+      dispatch(deleteRoom(id));
+    }
+    
   };
 
   const columns = [

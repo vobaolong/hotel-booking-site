@@ -42,7 +42,10 @@ const UserList = () => {
   }, [dispatch, error, alert, deleteError, isDeleted, navigate, message]);
 
   const deleteUserHandler = (id) => {
-    dispatch(deleteUser(id));
+    if (window.confirm("Có chắc chắn xóa?")) {
+      dispatch(deleteUser(id));
+    }
+    
   };
 
   const columns = [
