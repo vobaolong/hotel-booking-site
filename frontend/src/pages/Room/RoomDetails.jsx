@@ -117,6 +117,7 @@ const RoomDetails = () => {
     }
   }
   const addToCartHandler = () => {
+
     if(room.disabledEnd && room.disabledStart) {
       if(checkBetween(datesReserve[0].startDate, new Date(room.disabledEnd), new Date(room.disabledStart)) || 
       checkBetween(datesReserve[0].endDate, new Date(room.disabledEnd), new Date(room.disabledStart))
@@ -126,19 +127,20 @@ const RoomDetails = () => {
         end.setDate(minDate.getDate()+ 1) 
       
         setDatesReserve([{startDate: minDate, endDate: end, key: "selection" }])
+        return ;
       }
-    } else {
-      dispatch(
-        addItemsToCart(
-          id,
-          days,
-          datesReserve[0].startDate,
-          datesReserve[0].endDate,
-          totalPrice()
-        )
-      );
-      alert.success("Thêm vào danh sách thành công");
-    }
+    } 
+    dispatch(
+      addItemsToCart(
+        id,
+        days,
+        datesReserve[0].startDate,
+        datesReserve[0].endDate,
+        totalPrice()
+      )
+    );
+    alert.success("Thêm vào danh sách thành công");
+    return ;
     
   };
 
