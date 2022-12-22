@@ -177,7 +177,7 @@ const RoomReviews = () => {
             />
           ) : (
             <p className="text-center text-gray-400 text-xl mt-10">
-              Không tìm thấy đánh giá
+              Không tìm thấy đánh giá!
             </p>
           )}
         </div>

@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import MetaData from "../../components/layout/MetaData";
 import { Link, useParams } from "react-router-dom";
@@ -7,11 +7,11 @@ import { useAlert } from "react-alert";
 import {
   getOrderDetails,
   clearErrors,
-  updateOrder,
+  // updateOrder,
 } from "../../actions/orderAction";
 import Loader from "../../components/layout/Loader/Loader";
-import Button from "../../components/user/Button";
-import { CheckBoxOutlined } from "@material-ui/icons";
+// import Button from "../../components/user/Button";
+// import { CheckBoxOutlined } from "@material-ui/icons";
 import { UPDATE_ORDER_RESET } from "../../constants/orderConstants";
 import FormatPrice from "../../components/format";
 
@@ -21,21 +21,21 @@ const ProcessOrder = () => {
   const params = useParams();
 
   const { order, error, loading } = useSelector((state) => state.orderDetails);
-  console.log(order);
+  // console.log(order);
   const {
     error: updateError,
     isUpdated,
     loading: loadingOrder,
   } = useSelector((state) => state.order);
-  const [status, setStatus] = useState("");
+  // const [status, setStatus] = useState("");
 
-  const updateProcessOrder = (e) => {
-    e.preventDefault();
-    const myForm = new FormData();
-    myForm.set("status", status);
+  // const updateProcessOrder = (e) => {
+  //   e.preventDefault();
+  //   const myForm = new FormData();
+  //   myForm.set("status", status);
 
-    dispatch(updateOrder(params.id, myForm));
-  };
+  //   dispatch(updateOrder(params.id, myForm));
+  // };
 
   useEffect(() => {
     if (error) {
@@ -151,9 +151,7 @@ const ProcessOrder = () => {
                   </div>
 
                   <div className="my-5">
-                    <p className="text-xl font-bold">
-                      Chi tiết đơn đặt phòng:{" "}
-                    </p>
+                    <p className="text-xl font-bold">Chi tiết đơn đặt phòng </p>
                     <div>
                       {order.orderItems?.map((item, index) => {
                         return (
@@ -181,7 +179,8 @@ const ProcessOrder = () => {
                               </span>
                               {FormatPrice(order.totalPrice)}{" "}
                               <span className="text-sm font-light right-2">
-                                ({item.days} đêm)
+                                ({FormatPrice(item.price)} x {item.days} đêm +
+                                VAT: {FormatPrice(order.taxPrice)})
                               </span>
                             </b>
                           </div>
@@ -191,7 +190,7 @@ const ProcessOrder = () => {
                   </div>
                 </div>
 
-                {order.orderStatus !== "Confirm" && (
+                {/* {order.orderStatus !== "Confirm" && (
                   <div className="tall:pl-8 py-5  mt-3 md:mt-0 col-span-6 tall:col-span-2">
                     <form
                       className="w-[100%] h-[60vh] flex flex-col gap-6 justify-center items-center mx-auto shadow-lg bg-white p-5 rounded-md"
@@ -233,7 +232,7 @@ const ProcessOrder = () => {
                       </div>
                     </form>
                   </div>
-                )}
+                )} */}
               </div>
             </div>
           </div>

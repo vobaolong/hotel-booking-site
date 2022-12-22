@@ -13,7 +13,7 @@ const OrderDetails = () => {
   const { user } = useSelector((state) => state.user);
   const alert = useAlert();
   const params = useParams();
-  console.log(order);
+  // console.log(order);
 
   useEffect(() => {
     if (error) {

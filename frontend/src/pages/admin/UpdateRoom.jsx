@@ -10,7 +10,7 @@ import Button from "../../components/user/Button";
 import MetaData from "../../components/layout/MetaData";
 import {
   Description,
-  Storage,
+  // Storage,
   Spellcheck,
   AttachMoney,
   Group,
